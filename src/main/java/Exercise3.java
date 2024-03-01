@@ -68,8 +68,17 @@ public class Exercise3 {
     */
 
     public static List<String> findReapetdWords(String input) {
-        List<String> repeatedWords = new ArrayList<>();
-        return repeatedWords;
+        String regex = "\\b([a-z]+)\\1\\b";
+
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(input);
+        List<String> wordsWithRepeatLetters = new ArrayList<>();
+
+        while (matcher.find()) {
+            wordsWithRepeatLetters.add(matcher.group());
+        }
+
+        return wordsWithRepeatLetters;
         // TODO
     }
 
